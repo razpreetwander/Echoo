@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <!-- Soft iOS-style app icon drop shadow for 192x192 -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#000000" flood-opacity="0.18" />
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.10" />
+    </filter>
+  </defs>
+
+  <!-- Transparent base -->
+  <rect width="192" height="192" fill="transparent" />
+
+  <!-- White Rounded App Icon Tile (156x156 with 36px smooth radius) -->
+  <rect x="18" y="16" width="156" height="156" rx="36" ry="36" fill="#FFFFFF" filter="url(#shadow)" />
+
+  <!-- Exact Geometric "X" with thicker center bridge, perfectly centered -->
+  <path fill="#000000" fill-rule="evenodd" d="
+    M 56 41
+    L 83 63
+    L 83 86
+    C 83 88.8 85.2 91 88 91
+    L 104 91
+    C 106.8 91 109 88.8 109 86
+    L 109 63
+    L 136 41
+    L 136 69
+    L 109 91
+    L 136 120
+    L 136 148
+    L 109 126
+    L 109 103
+    C 109 100.2 106.8 98 104 98
+    L 88 98
+    C 85.2 98 83 100.2 83 103
+    L 83 126
+    L 56 148
+    L 56 120
+    L 83 98
+    L 56 69
+    Z
+  " />
+</svg>

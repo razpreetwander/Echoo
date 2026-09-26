@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="100%" height="100%">
+  <defs>
+    <!-- Soft iOS-style app icon drop shadow -->
+    <filter id="icon-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="28" stdDeviation="32" flood-color="#000000" flood-opacity="0.16" />
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.10" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1024" height="1024" fill="none" />
+
+  <!-- Clean White App Icon Base (Superellipse Tile) -->
+  <rect x="96" y="96" width="832" height="832" rx="196" ry="196" fill="#FFFFFF" filter="url(#icon-shadow)" />
+
+  <!-- Exact Geometric "X" with thicker center bridge -->
+  <path fill="#000000" fill-rule="evenodd" d="
+    M 300 228
+    L 444 344
+    L 444 466
+    C 444 480 456 492 470 492
+    L 554 492
+    C 568 492 580 480 580 466
+    L 580 344
+    L 724 228
+    L 724 378
+    L 580 494
+    L 724 646
+    L 724 796
+    L 580 680
+    L 580 558
+    C 580 544 568 532 554 532
+    L 470 532
+    C 456 532 444 544 444 558
+    L 444 680
+    L 300 796
+    L 300 646
+    L 444 494
+    L 300 378
+    Z
+  " />
+</svg>
