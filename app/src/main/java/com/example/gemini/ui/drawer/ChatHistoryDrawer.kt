@@ -601,10 +601,10 @@ fun ChatHistoryDrawer(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "AntiGem",
-                    fontSize = 19.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = (-0.3).sp,
+                    text = "ECHOO",
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    letterSpacing = 0.5.sp,
                     color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.weight(1f)
                 )
@@ -924,6 +924,63 @@ fun ChatHistoryDrawer(
 
                     if (isAgentFolderExpanded) {
                         Spacer(modifier = Modifier.height(8.dp))
+                        // Row 1: Tasks & Automations (from Echoo Agent)
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp),
+                                color = MaterialTheme.colorScheme.surface,
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .clickable {
+                                        com.example.gemini.ui.echoo.EchooTaskManager.createPlan("Analyze project and generate workflow")
+                                        com.example.gemini.ui.components.AppToastHelper.showToast(
+                                            "Tasks Plan Created! Check logs in terminal",
+                                            com.example.gemini.ui.components.ChatToastType.INFO
+                                        )
+                                    }
+                            ) {
+                                Row(
+                                    modifier = Modifier.padding(vertical = 6.dp, horizontal = 6.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.Center
+                                ) {
+                                    Icon(Icons.Outlined.TaskAlt, contentDescription = null, modifier = Modifier.size(14.dp), tint = MaterialTheme.colorScheme.primary)
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text("Tasks", fontSize = 11.5.sp, fontWeight = FontWeight.SemiBold)
+                                }
+                            }
+
+                            Surface(
+                                shape = RoundedCornerShape(8.dp),
+                                color = MaterialTheme.colorScheme.surface,
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .clickable {
+                                        com.example.gemini.ui.echoo.EchooTaskManager.saveAutomation("Daily Routine", "Run git pull and check updates", "09:00")
+                                        com.example.gemini.ui.components.AppToastHelper.showToast(
+                                            "Daily Automation Scheduled for 09:00!",
+                                            com.example.gemini.ui.components.ChatToastType.INFO
+                                        )
+                                    }
+                            ) {
+                                Row(
+                                    modifier = Modifier.padding(vertical = 6.dp, horizontal = 6.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.Center
+                                ) {
+                                    Icon(Icons.Outlined.Schedule, contentDescription = null, modifier = Modifier.size(14.dp), tint = MaterialTheme.colorScheme.primary)
+                                    Spacer(modifier = Modifier.width(4.dp))
+                                    Text("Automation", fontSize = 11.5.sp, fontWeight = FontWeight.SemiBold)
+                                }
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(6.dp))
+
+                        // Row 2: Terminal, IDE, Browser
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                             modifier = Modifier.fillMaxWidth()
@@ -941,7 +998,7 @@ fun ChatHistoryDrawer(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.Center
                                 ) {
-                                    Icon(Icons.Outlined.Terminal, contentDescription = null, modifier = Modifier.size(14.dp), tint = ClaudeTerracotta)
+                                    Icon(Icons.Outlined.Terminal, contentDescription = null, modifier = Modifier.size(14.dp), tint = MaterialTheme.colorScheme.primary)
                                     Spacer(modifier = Modifier.width(4.dp))
                                     Text("Terminal", fontSize = 11.5.sp, fontWeight = FontWeight.SemiBold)
                                 }
@@ -960,7 +1017,7 @@ fun ChatHistoryDrawer(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.Center
                                 ) {
-                                    Icon(Icons.Outlined.Code, contentDescription = null, modifier = Modifier.size(14.dp), tint = ClaudeTerracotta)
+                                    Icon(Icons.Outlined.Code, contentDescription = null, modifier = Modifier.size(14.dp), tint = MaterialTheme.colorScheme.primary)
                                     Spacer(modifier = Modifier.width(4.dp))
                                     Text("IDE <>", fontSize = 11.5.sp, fontWeight = FontWeight.SemiBold)
                                 }
@@ -979,7 +1036,7 @@ fun ChatHistoryDrawer(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.Center
                                 ) {
-                                    Icon(Icons.Outlined.Language, contentDescription = null, modifier = Modifier.size(14.dp), tint = ClaudeTerracotta)
+                                    Icon(Icons.Outlined.Language, contentDescription = null, modifier = Modifier.size(14.dp), tint = MaterialTheme.colorScheme.primary)
                                     Spacer(modifier = Modifier.width(4.dp))
                                     Text("Browser", fontSize = 11.5.sp, fontWeight = FontWeight.SemiBold)
                                 }

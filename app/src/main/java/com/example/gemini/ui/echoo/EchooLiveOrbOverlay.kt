@@ -148,3 +148,16 @@ fun EchooLiveOrbOverlay(
         }
     }
 }
+
+object EchooLiveOrbManager {
+    var isLiveOrbActive by mutableStateOf(false)
+        private set
+
+    fun startOrb() {
+        isLiveOrbActive = true
+    }
+
+    fun stopOrb() {
+        isLiveOrbActive = false
+    }
+}

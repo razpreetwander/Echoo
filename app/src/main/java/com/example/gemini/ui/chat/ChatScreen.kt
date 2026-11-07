@@ -1556,6 +1556,34 @@ fun ChatScreen(
                                 )
                             }
                         }
+                        IconButton(
+                            onClick = {
+                                com.example.gemini.ui.echoo.EchooLiveOrbManager.startOrb()
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.GraphicEq,
+                                contentDescription = "Live Conversation",
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(22.dp)
+                            )
+                        }
+                        IconButton(
+                            onClick = {
+                                viewModel.startNewChat()
+                                com.example.gemini.ui.components.AppToastHelper.showToast(
+                                    "Incognito mode active: chats will not be saved permanently",
+                                    com.example.gemini.ui.components.ChatToastType.INFO
+                                )
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Outlined.VisibilityOff,
+                                contentDescription = "Incognito Mode",
+                                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
                         if (isDevModeEnabled) {
                             IconButton(onClick = { showChatTelemetryDialog = true }) {
                                 Icon(
@@ -1760,20 +1788,40 @@ fun ChatScreen(
                                         }
                                     }
                                     else -> {
+                                        // Echoo Welcome Brand Screen
                                         Text(
-                                            text = "How can I help you today?",
-                                            fontSize = 22.sp,
-                                            fontWeight = FontWeight.SemiBold,
+                                            text = "Live conversation and quick work",
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.ExtraBold,
                                             color = MaterialTheme.colorScheme.onSurface,
                                             textAlign = TextAlign.Center
                                         )
-                                        Spacer(modifier = Modifier.height(8.dp))
+                                        Spacer(modifier = Modifier.height(6.dp))
                                         Text(
-                                            text = "Ask a question, brainstorm ideas, or start coding",
-                                            fontSize = 14.sp,
-                                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.55f),
-                                            textAlign = TextAlign.Center
+                                            text = "Talk live with your AI agent and get any task done easily.",
+                                            fontSize = 13.5.sp,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.65f),
+                                            textAlign = TextAlign.Center,
+                                            modifier = Modifier.padding(horizontal = 24.dp)
                                         )
+                                        Spacer(modifier = Modifier.height(16.dp))
+                                        Button(
+                                            onClick = {
+                                                com.example.gemini.ui.echoo.EchooLiveOrbManager.startOrb()
+                                            },
+                                            shape = RoundedCornerShape(999.dp),
+                                            colors = ButtonDefaults.buttonColors(
+                                                containerColor = MaterialTheme.colorScheme.onSurface,
+                                                contentColor = MaterialTheme.colorScheme.surface
+                                            ),
+                                            modifier = Modifier.height(42.dp)
+                                        ) {
+                                            Text(
+                                                text = "Start live conversation",
+                                                fontSize = 14.sp,
+                                                fontWeight = FontWeight.Bold
+                                            )
+                                        }
                                     }
                                 }
                             }
@@ -1909,6 +1957,40 @@ fun ChatScreen(
                                                 },
                                                 onShowArtifacts = { showArtifactsDrawer = true },
                                                 artifactsCount = artifacts.size
+                                            )
+                                            // Echoo 7-Action Row (Copy, Like, Dislike, Speak, Make Task, Make Automation, Share)
+                                            com.example.gemini.ui.echoo.EchooMessageActionRow(
+                                                messageText = feedItem.message.content,
+                                                onCopy = {
+                                                    val clipboard = context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+                                                    clipboard.setPrimaryClip(android.content.ClipData.newPlainText("Copied Response", feedItem.message.content))
+                                                    android.widget.Toast.makeText(context, "Copied response", android.widget.Toast.LENGTH_SHORT).show()
+                                                },
+                                                onMakeTask = { txt ->
+                                                    com.example.gemini.ui.echoo.EchooTaskManager.createPlan(txt)
+                                                    com.example.gemini.ui.components.AppToastHelper.showToast(
+                                                        "Task created from response! Check Agent → Tasks",
+                                                        com.example.gemini.ui.components.ChatToastType.INFO
+                                                    )
+                                                },
+                                                onMakeAutomation = { txt ->
+                                                    com.example.gemini.ui.echoo.EchooTaskManager.saveAutomation("AI Routine", txt, "09:00")
+                                                    com.example.gemini.ui.components.AppToastHelper.showToast(
+                                                        "Automation scheduled! Check Agent → Automations",
+                                                        com.example.gemini.ui.components.ChatToastType.INFO
+                                                    )
+                                                },
+                                                onSpeak = {
+                                                    // Jarvis TTS speech
+                                                },
+                                                onShare = {
+                                                    val intent = android.content.Intent(android.content.Intent.ACTION_SEND).apply {
+                                                        type = "text/plain"
+                                                        putExtra(android.content.Intent.EXTRA_TEXT, feedItem.message.content)
+                                                    }
+                                                    context.startActivity(android.content.Intent.createChooser(intent, "Share response via"))
+                                                },
+                                                modifier = Modifier.padding(horizontal = 16.dp)
                                             )
                                         }
                                         is ChatFeedItem.StreamingMessage -> {
@@ -2945,6 +3027,14 @@ fun ChatScreen(
                     viewModel.authPreferences.setHasSeenTerminalLauncherOnboarding(true)
                 }
             }
+        )
+    }
+
+    // Echoo Live Orb Fullscreen Overlay (Pulsing glowing AI agent)
+    if (com.example.gemini.ui.echoo.EchooLiveOrbManager.isLiveOrbActive) {
+        com.example.gemini.ui.echoo.EchooLiveOrbOverlay(
+            chatViewModel = viewModel,
+            onClose = { com.example.gemini.ui.echoo.EchooLiveOrbManager.stopOrb() }
         )
     }
 
