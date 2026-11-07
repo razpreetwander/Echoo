@@ -38,6 +38,7 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.filled.PowerSettingsNew
+import com.example.gemini.ui.echoo.EchooTaskManager
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material.icons.outlined.ChatBubbleOutline
@@ -664,9 +665,9 @@ fun ChatHistoryDrawer(
                                 color = ClaudeTerracotta
                             )
                             Icon(
-                                imageVector = Icons.Default.ArrowDropDown,
+                                imageVector = Icons.Default.KeyboardArrowDown,
                                 contentDescription = null,
-                                modifier = Modifier.size(14.dp),
+                                modifier = Modifier.size(16.dp),
                                 tint = ClaudeTerracotta
                             )
                         }
@@ -678,7 +679,7 @@ fun ChatHistoryDrawer(
                     ) {
                         DropdownMenuItem(
                             text = { Text("New chat") },
-                            leadingIcon = { Icon(Icons.Default.ChatBubbleOutline, contentDescription = null, modifier = Modifier.size(16.dp)) },
+                            leadingIcon = { Icon(Icons.Outlined.ChatBubbleOutline, contentDescription = null, modifier = Modifier.size(16.dp)) },
                             onClick = {
                                 newConvDropdownOpen = false
                                 searchQuery = ""
@@ -690,7 +691,7 @@ fun ChatHistoryDrawer(
                         )
                         DropdownMenuItem(
                             text = { Text("New Task") },
-                            leadingIcon = { Icon(Icons.Default.CheckCircleOutline, contentDescription = null, modifier = Modifier.size(16.dp)) },
+                            leadingIcon = { Icon(Icons.Outlined.TaskAlt, contentDescription = null, modifier = Modifier.size(16.dp)) },
                             onClick = {
                                 newConvDropdownOpen = false
                                 // Create default sample task
@@ -699,7 +700,7 @@ fun ChatHistoryDrawer(
                         )
                         DropdownMenuItem(
                             text = { Text("New Automation") },
-                            leadingIcon = { Icon(Icons.Default.Schedule, contentDescription = null, modifier = Modifier.size(16.dp)) },
+                            leadingIcon = { Icon(Icons.Outlined.Schedule, contentDescription = null, modifier = Modifier.size(16.dp)) },
                             onClick = {
                                 newConvDropdownOpen = false
                                 EchooTaskManager.saveAutomation("Daily Routine", "Run git pull and check updates", "09:00")
@@ -913,7 +914,7 @@ fun ChatHistoryDrawer(
                             modifier = Modifier.weight(1f)
                         )
                         Icon(
-                            imageVector = if (isAgentFolderExpanded) Icons.Default.ArrowDropUp else Icons.Default.ArrowDropDown,
+                            imageVector = if (isAgentFolderExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
                             contentDescription = null,
                             modifier = Modifier.size(18.dp),
                             tint = MaterialTheme.colorScheme.onSurfaceVariant

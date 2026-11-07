@@ -1314,7 +1314,7 @@ fun ChatScreen(
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Text(
-                                        text = currentModel?.name ?: (if (isClaudeChat) "Claude" else "Gemini"),
+                                        text = currentModel?.displayName ?: (if (isClaudeChat) "Claude" else "Gemini"),
                                         fontSize = 12.sp,
                                         fontWeight = FontWeight.SemiBold,
                                         color = MaterialTheme.colorScheme.onSurface,
