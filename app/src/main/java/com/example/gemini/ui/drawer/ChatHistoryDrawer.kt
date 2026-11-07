@@ -41,6 +41,7 @@ import androidx.compose.material.icons.filled.PowerSettingsNew
 import com.example.gemini.ui.echoo.EchooTaskManager
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Tune
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.material.icons.outlined.ChatBubbleOutline
 import androidx.compose.material.icons.outlined.Public
 import com.example.gemini.ui.components.AppToastHelper
