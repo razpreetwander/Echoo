@@ -939,7 +939,7 @@ fun ChatHistoryDrawer(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.Center
                                 ) {
-                                    Icon(Icons.Default.Code, contentDescription = null, modifier = Modifier.size(14.dp), tint = ClaudeTerracotta)
+                                    Icon(Icons.Outlined.Terminal, contentDescription = null, modifier = Modifier.size(14.dp), tint = ClaudeTerracotta)
                                     Spacer(modifier = Modifier.width(4.dp))
                                     Text("Terminal", fontSize = 11.5.sp, fontWeight = FontWeight.SemiBold)
                                 }
@@ -958,7 +958,7 @@ fun ChatHistoryDrawer(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.Center
                                 ) {
-                                    Icon(Icons.Default.Terminal, contentDescription = null, modifier = Modifier.size(14.dp), tint = ClaudeTerracotta)
+                                    Icon(Icons.Outlined.Code, contentDescription = null, modifier = Modifier.size(14.dp), tint = ClaudeTerracotta)
                                     Spacer(modifier = Modifier.width(4.dp))
                                     Text("IDE <>", fontSize = 11.5.sp, fontWeight = FontWeight.SemiBold)
                                 }
@@ -977,7 +977,7 @@ fun ChatHistoryDrawer(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.Center
                                 ) {
-                                    Icon(Icons.Default.Language, contentDescription = null, modifier = Modifier.size(14.dp), tint = ClaudeTerracotta)
+                                    Icon(Icons.Outlined.Language, contentDescription = null, modifier = Modifier.size(14.dp), tint = ClaudeTerracotta)
                                     Spacer(modifier = Modifier.width(4.dp))
                                     Text("Browser", fontSize = 11.5.sp, fontWeight = FontWeight.SemiBold)
                                 }

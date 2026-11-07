@@ -72,7 +72,7 @@ fun EchooTopBar(
                         color = EchooColors.Blue
                     )
                     Text(
-                        text = if (selectedAgent == "CLAUDE") "Claude" else "Agy",
+                        text = if (selectedAgent == com.example.gemini.domain.model.AgentKind.CLAUDE) "Claude" else "Agy",
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 13.sp
                     )
@@ -91,21 +91,21 @@ fun EchooTopBar(
                 DropdownMenuItem(
                     text = { Text("ECHOO Antigravity (agy)") },
                     onClick = {
-                        viewModel.setNewChatAgent("AGY")
+                        viewModel.setNewChatAgent(com.example.gemini.domain.model.AgentKind.AGY)
                         showModelMenu = false
                     },
                     leadingIcon = {
-                        RadioButton(selected = selectedAgent == "AGY", onClick = null)
+                        RadioButton(selected = selectedAgent == com.example.gemini.domain.model.AgentKind.AGY, onClick = null)
                     }
                 )
                 DropdownMenuItem(
                     text = { Text("ECHOO Claude Code (CLI)") },
                     onClick = {
-                        viewModel.setNewChatAgent("CLAUDE")
+                        viewModel.setNewChatAgent(com.example.gemini.domain.model.AgentKind.CLAUDE)
                         showModelMenu = false
                     },
                     leadingIcon = {
-                        RadioButton(selected = selectedAgent == "CLAUDE", onClick = null)
+                        RadioButton(selected = selectedAgent == com.example.gemini.domain.model.AgentKind.CLAUDE, onClick = null)
                     }
                 )
             }

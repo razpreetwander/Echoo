@@ -18,7 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.gemini.data.entity.Conversation
+import com.example.gemini.domain.model.Conversation
 import com.example.gemini.ui.chat.ChatViewModel
 
 @Composable
